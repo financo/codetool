@@ -33,11 +33,9 @@ public class Table {
 		this.associatedTables=new LinkedHashMap<String, ForeignKey>();
 	}
 
-	public void addForeignKey(String tableName, String columnName,String parentColumn,String parentName, String relation,
-			String mainFk,String relTableName,String description,String showColumnName,boolean isShow,boolean isSearchCondition,
-			String ShowField,String SearchField, boolean isSort, String referenceField, String parentFieldOfReferencedObject){
-		this.addForeignKey(tableName, columnName, parentColumn, parentName, relation, mainFk, relTableName, description,
-				showColumnName,null,null,isShow,isSearchCondition,ShowField,SearchField,isSort,referenceField,parentFieldOfReferencedObject);
+	public void addForeignKey(String tableName, String columnName,
+			String parentColumn,String parentName, String relation,String mainFk,String relTableName,String description,String showColumnName){
+		this.addForeignKey(tableName, columnName, parentColumn, parentName, relation, mainFk, relTableName, description, showColumnName,null,null);
 	}
 	
 	/**
@@ -50,12 +48,9 @@ public class Table {
 	 * @param description 属性备注
 	 * @param showColumnName 显示列（关联表）
 	 */
-	public void addForeignKey(String tableName, String columnName,String parentColumn,String parentName, String relation,String mainFk,
-			String relTableName,String description,String showColumnName,GeneratorField field, FilterColumn filterColumn,
-			boolean isShow,boolean isSearchCondition,String ShowField,String SearchField,boolean isSort,String referenceField,
-			String parentFieldOfReferencedObject) {
-		ForeignKey fk = new ForeignKey(tableName, columnName, parentColumn,parentName,relation,mainFk,relTableName,
-				description,showColumnName,isShow,ShowField,isSearchCondition,SearchField,isSort,referenceField,parentFieldOfReferencedObject);
+	public void addForeignKey(String tableName, String columnName,
+			String parentColumn,String parentName, String relation,String mainFk,String relTableName,String description,String showColumnName,GeneratorField field, FilterColumn filterColumn) {
+		ForeignKey fk = new ForeignKey(tableName, columnName, parentColumn,parentName,relation,mainFk,relTableName,description,showColumnName);
 		for (Iterator itr = associatedTables.keySet().iterator(); itr.hasNext();) {
 			ForeignKey value = associatedTables.get(itr.next());
 			if(value.equals(fk)){

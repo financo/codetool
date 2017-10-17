@@ -84,20 +84,6 @@
 							<li><a class="J_menuItem" href="genView!list.action">View</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="#">
-							<i class="fa fa-edit"></i>
-							<span class="nav-label">springboot-react</span>
-							<span class="fa arrow"></span>
-						</a>
-						<ul class="nav nav-second-level">
-							<li><a class="J_menuItem" href="SRDataBaseConfig!list.action">数据库配置</a></li>
-							<li><a class="J_menuItem" href="SRWebConfig!list.action">web配置</a></li>
-							<li><a class="J_menuItem" href="SRProjectConfig!list.action">项目配置</a></li>
-							<li><a class="J_menuItem" href="SREntityConfig!list.action">实体注册</a></li>
-							<li><a class="J_menuItem" href="SRFieldConfig!list.action">属性注册</a></li>
-						</ul>
-					</li>
 
 				</ul>
 			</div>

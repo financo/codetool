@@ -258,7 +258,7 @@ public class FileHelper {
 
 		copyFileList = new HashSet();
 		copyFileList.add("jar");
-//		copyFileList.add("js");
+		copyFileList.add("js");
 		copyFileList.add("css");
 		copyFileList.add("png");
 		copyFileList.add("jpg");

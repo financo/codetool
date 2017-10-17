@@ -100,33 +100,6 @@ public class DataParser {
 				Boolean isSeach = StringHelper.convert2Boolean(f.getIsSearch());
 				column.setSearch(isSeach);
 				column.setField(f);//直接持有field
-				
-				//2017.9.12添加
-				column.setShow(StringHelper.convert2Boolean(f.getIsShow()));
-				column.setSearchCondition(StringHelper.convert2Boolean(f.getIsSearchCondition()));
-				column.setShowField(f.getShowField());
-				column.setSearchField(f.getSearchField());
-				
-				//2017.10.11添加表头排序
-				column.setSort(StringHelper.convert2Boolean(f.getIsSort()));
-								
-				//2017.9.30添加
-				//找到自关联的实体，取出自关联的属性名
-				String parentFieldOfReferencedObject = null;
-				for (GeneratorEntity innerEntity : entitys) {
-					if (f.getEntityTypeId()==innerEntity.getId()) {
-						for (GeneratorField innerf : innerEntity.getGeneratorFields()) {
-							if (innerf.getEntityId()==innerf.getEntityTypeId()) {
-								parentFieldOfReferencedObject = innerf.getCode();
-							}
-						}
-					}
-				}
-				if (parentFieldOfReferencedObject != null) {
-					column.setParentFieldOfReferencedObject(parentFieldOfReferencedObject);
-				}
-				
-				
 				if(isSeach){
 					tb.setSearchFieldCount(tb.getSearchFieldCount()+1);
 				}
@@ -136,7 +109,6 @@ public class DataParser {
 				if (column.getPk()) {
 					tb.getPrimaryKeyColumns().add(column);
 				}
-				
 			}
 		}
 		// 外键
@@ -153,26 +125,6 @@ public class DataParser {
 						throw new Exception("table["+fkTb.getClassName()+"]没有主键.");
 					}
 					Column fkPkColumn= fkTb.getPrimaryKeyColumns().getFirst();
-					
-					//找到自关联的实体，取出自关联的属性名
-					String parentFieldOfReferencedObject = null;
-					for (GeneratorEntity innerEntity : entitys) {
-						if (f.getEntityTypeId()==innerEntity.getId()) {
-							for (GeneratorField innerf : innerEntity.getGeneratorFields()) {
-								if (innerf.getEntityId()==innerf.getEntityTypeId()) {
-									parentFieldOfReferencedObject = innerf.getCode();
-								}
-							}
-						}
-					}
-					
-					//是否展示，是否作为搜索条件
-					String referenceField = f.getCode();
-					boolean isSort = StringHelper.convert2Boolean(f.getIsSort());
-					boolean isShow = StringHelper.convert2Boolean(f.getIsShow());
-					boolean isSearchCondition = StringHelper.convert2Boolean(f.getIsSearchCondition());
-					String ShowField = f.getShowField();
-					String SearchField = f.getSearchField();
 					/*if(fkTableColumn.equalsIgnoreCase("OneToMany")){
 						String parentTable=currTb.getClassName();
 						String parentColumn=currTb.getPrimaryKeyColumns().getFirst().getColumnName();
@@ -203,11 +155,8 @@ public class DataParser {
 						if(f.getShowColumn()==null){
 							throw new Exception("实体("+currTb.getClassName()+")的字段("+f.getCode()+")未设置显示属性.");
 						}
-						currTb.addForeignKey(fkTableName,fkColumn,parentColumn,f.getCode() ,"ManyToOne",null,null,f.getName(),
-								f.getShowColumn().getCode(),f,filterColumn,isShow,isSearchCondition,ShowField,SearchField,isSort,
-								referenceField,parentFieldOfReferencedObject);
-//						fkTb.addForeignKey(parentTable,parentColumn ,fkColumn,null,"OneToMany",fkTb.getDescription(),
-//								null,null,null,isShow,isSearchCondition,ShowField,SearchField,referenceField);
+						currTb.addForeignKey(fkTableName,fkColumn,parentColumn,f.getCode() ,"ManyToOne",null,null,f.getName(),f.getShowColumn().getCode(),f,filterColumn);
+						fkTb.addForeignKey(parentTable,parentColumn ,fkColumn,null,"OneToMany",fkTb.getDescription(),null,null,null);
 					}
 					if(fkTableColumn.equalsIgnoreCase("ManyToMany")){
 						String relTableName =currTb.getClassName()+"_"+fkTableName+"_rel";
@@ -217,11 +166,8 @@ public class DataParser {
 						if(f.getShowColumn()==null){
 							throw new Exception("实体("+currTb.getClassName()+")的字段("+f.getCode()+")未设置显示属性.");
 						}
-						currTb.addForeignKey(fkTableName, fkColumn,parentColumn,f.getCode(),"ManyToMany",String.valueOf(f.getMainFk()),
-								relTableName,f.getName(),f.getShowColumn().getCode(),f,null,isShow,isSearchCondition,
-								ShowField,SearchField,isSort,referenceField,parentFieldOfReferencedObject);
-//						fkTb.addForeignKey(parentTable,parentColumn,fkColumn ,null,"ManyToMany",fkTb.getDescription(),relTableName,
-//								null,null,isShow,isSearchCondition,ShowField,SearchField,referenceField);
+						currTb.addForeignKey(fkTableName, fkColumn,parentColumn,f.getCode(),"ManyToMany",String.valueOf(f.getMainFk()),relTableName,f.getName(),f.getShowColumn().getCode(),f,null);
+						fkTb.addForeignKey(parentTable,parentColumn,fkColumn ,null,"ManyToMany",fkTb.getDescription(),relTableName,null,null);
 					}
 				}
 			}

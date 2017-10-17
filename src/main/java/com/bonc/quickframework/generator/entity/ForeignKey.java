@@ -26,14 +26,6 @@ public class ForeignKey {
 	private GeneratorField field;
 	private FilterColumn filterColumn;
 	
-	private boolean isSort=false;
-	private boolean isShow=false;
-	private java.lang.String showField;
-	private boolean isSearchCondition=false;
-	private java.lang.String searchField;
-	private String referenceField;
-	private String parentFieldOfReferencedObject;
-	
 	
 	public ForeignKey(String tblName, String columnName, String parentColumn,String parentName,
 			String relation,String mainFk,String relTableName,String description,String showColumnName) {
@@ -54,38 +46,6 @@ public class ForeignKey {
 
 		this.description=description;
 		this.showColumnName=StringHelper.javaVarName(showColumnName);
-		
-	}
-	
-	public ForeignKey(String tblName, String columnName, String parentColumn,String parentName,
-			String relation,String mainFk,String relTableName,String description,String showColumnName,
-			boolean isShow, String showField, boolean isSearchCondition, String searchField, boolean isSort, String referenceField,
-			String parentFieldOfReferencedObject) {
-		this.classTableName = StringHelper.javaTypeName(tblName);
-		this.sqlTableName = StringHelper.sqlTypeName(tblName);
-		this.columnName = StringHelper.javaTypeName(columnName);
-		this.sqlColumnName=StringHelper.sqlTypeName(columnName);
-		this.relation = relation;
-		this.mainFk=mainFk;
-		//
-		this.relTableName=StringHelper.sqlTypeName(relTableName);
-		
-		this.parentName=StringHelper.javaTypeName(parentName);
-		this.parentSqlName=StringHelper.sqlTypeName(parentName);
-		
-		this.parentColumn = StringHelper.javaTypeName(parentColumn);
-		this.parentSqlColumn = StringHelper.sqlTypeName(parentColumn);
-
-		this.description=description;
-		this.showColumnName=StringHelper.javaVarName(showColumnName);
-		
-		this.isSort=isSort;
-		this.isShow=isShow;
-		this.showField=StringHelper.javaVarName(showField);
-		this.isSearchCondition=isSearchCondition;
-		this.searchField=StringHelper.javaVarName(searchField);
-		this.referenceField=StringHelper.javaVarName(referenceField);
-		this.parentFieldOfReferencedObject=StringHelper.javaVarName(parentFieldOfReferencedObject);
 	}
 
 	// get、set
@@ -217,63 +177,6 @@ public class ForeignKey {
 
 	public void setField(GeneratorField field) {
 		this.field = field;
-	}
-	
-	public boolean isShow() {
-		return isShow;
-	}
-
-	public void setShow(boolean isShow) {
-		this.isShow = isShow;
-	}
-
-	public java.lang.String getShowField() {
-		return showField;
-	}
-
-	public void setShowField(java.lang.String showField) {
-		this.showField = showField;
-	}
-
-	public boolean isSearchCondition() {
-		return isSearchCondition;
-	}
-
-	public void setSearchCondition(boolean isSearchCondition) {
-		this.isSearchCondition = isSearchCondition;
-	}
-
-	public java.lang.String getSearchField() {
-		return searchField;
-	}
-
-	public void setSearchField(java.lang.String searchField) {
-		this.searchField = searchField;
-	}
-	
-	public boolean isSort() {
-		return isSort;
-	}
-
-	public void setSort(boolean isSort) {
-		this.isSort = isSort;
-	}
-
-	public String getReferenceField() {
-		return referenceField;
-	}
-
-	public void setReferenceField(String referenceField) {
-		this.referenceField = referenceField;
-	}
-	
-	public String getParentFieldOfReferencedObject() {
-		return parentFieldOfReferencedObject;
-	}
-
-	public void setParentFieldOfReferencedObject(
-			String parentFieldOfReferencedObject) {
-		this.parentFieldOfReferencedObject = parentFieldOfReferencedObject;
 	}
 
 	@Override

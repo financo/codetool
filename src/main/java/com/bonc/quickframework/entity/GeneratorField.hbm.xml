@@ -84,23 +84,6 @@
             <column name="VALID_MSG" length="255" not-null="false" unique="false"/>
         </property>
         
-        <property name="isShow" type="java.lang.Long">
-            <column name="IS_SHOW" length="19" not-null="false" unique="false"/>
-        </property>
-        
-        <property name="isSort" type="java.lang.Long">
-            <column name="IS_SORT" length="19" not-null="false" unique="false"/>
-        </property>
-        <property name="isSearchCondition" type="java.lang.Long">
-            <column name="IS_SEARCH_CONDITION" length="19" not-null="false" unique="false"/>
-        </property>
-        <property name="showField" type="java.lang.String">
-            <column name="SHOW_FIELD" length="255" not-null="false" unique="false"/>
-        </property>
-        <property name="searchField" type="java.lang.String">
-            <column name="SEARCH_FIELD" length="255" not-null="false" unique="false"/>
-        </property>
-        
 		<!-- One-To-Many attributes -->
 		<!-- Many-To-One attributes -->
 		

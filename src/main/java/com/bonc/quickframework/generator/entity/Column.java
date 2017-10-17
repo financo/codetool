@@ -17,13 +17,6 @@ public class Column {
 	private String description;
 	private boolean search=false;
 	
-	private boolean isShow=false;
-	private boolean isSort=false;
-	private java.lang.String showField;
-	private boolean isSearchCondition=false;
-	private java.lang.String searchField;
-	private java.lang.String parentFieldOfReferencedObject;
-	
 	
 	private GeneratorField field;
 	
@@ -153,57 +146,6 @@ public class Column {
 	public void setField(GeneratorField field) {
 		this.field = field;
 	}
-
-	public boolean isShow() {
-		return isShow;
-	}
-
-	public void setShow(boolean isShow) {
-		this.isShow = isShow;
-	}
-
-	public boolean isSort() {
-		return isSort;
-	}
-
-	public void setSort(boolean isSort) {
-		this.isSort = isSort;
-	}
-	
-	public java.lang.String getShowField() {
-		return showField;
-	}
-
-	public void setShowField(java.lang.String showField) {
-		this.showField = showField;
-	}
-
-	public boolean isSearchCondition() {
-		return isSearchCondition;
-	}
-
-	public void setSearchCondition(boolean isSearchCondition) {
-		this.isSearchCondition = isSearchCondition;
-	}
-
-	public java.lang.String getSearchField() {
-		return searchField;
-	}
-
-	public void setSearchField(java.lang.String searchField) {
-		this.searchField = searchField;
-	}
-
-	public java.lang.String getParentFieldOfReferencedObject() {
-		return parentFieldOfReferencedObject;
-	}
-
-	public void setParentFieldOfReferencedObject(
-			java.lang.String parentFieldOfReferencedObject) {
-		this.parentFieldOfReferencedObject = parentFieldOfReferencedObject;
-	}
-	
-	
 
 	
 }

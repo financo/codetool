@@ -47,11 +47,6 @@ public class GeneratorField implements java.io.Serializable{
 	private java.lang.String validPattern;
 	private java.lang.String validMsg;
 	
-	private java.lang.Long isShow;
-	private java.lang.Long isSort;
-	private java.lang.String showField;
-	private java.lang.Long isSearchCondition;
-	private java.lang.String searchField;
 	
 	//columns END
 
@@ -231,47 +226,6 @@ public class GeneratorField implements java.io.Serializable{
 	public void setValidMsg(java.lang.String validMsg) {
 		this.validMsg = validMsg;
 	}
-	
-	public java.lang.Long getIsShow() {
-		return isShow;
-	}
-
-	public void setIsShow(java.lang.Long isShow) {
-		this.isShow = isShow;
-	}
-	public java.lang.Long getIsSort() {
-		return isSort;
-	}
-
-	public void setIsSort(java.lang.Long isSort) {
-		this.isSort = isSort;
-	}
-
-	public java.lang.String getShowField() {
-		return showField;
-	}
-
-	public void setShowField(java.lang.String showField) {
-		this.showField = showField;
-	}
-
-	public java.lang.Long getIsSearchCondition() {
-		return isSearchCondition;
-	}
-
-	public void setIsSearchCondition(java.lang.Long isSearchCondition) {
-		this.isSearchCondition = isSearchCondition;
-	}
-
-	public java.lang.String getSearchField() {
-		return searchField;
-	}
-
-	public void setSearchField(java.lang.String searchField) {
-		this.searchField = searchField;
-	}
-
-
 
 	@JsonIgnore
 	private GeneratorUi ui;

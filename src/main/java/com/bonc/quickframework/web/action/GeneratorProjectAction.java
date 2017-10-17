@@ -76,7 +76,7 @@ public class GeneratorProjectAction extends AbstractGeneratorProjectAction {
 					.getRealPath(File.separator);
 			
 
-			String inputPath = basePath + "templates" + File.separator + project.getTemaplateName();
+			String inputPath = basePath + project.getTemaplateName();
 			String outputPath = project.getPath();
 
 			GeneratorFacade.makeProjectCode(project, web, db,
